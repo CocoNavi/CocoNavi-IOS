@@ -17,7 +17,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="xga-PE-vsY"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Calendar" id="RFE-QC-ivV"/>
+                    <tabBarItem key="tabBarItem" title="Calendar" image="calendar" catalog="system" selectedImage="calendar.circle.fill" id="RFE-QC-ivV"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x1r-fi-ePV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -33,7 +33,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="c3X-z3-q1Y"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="User" id="aKE-4n-mc1"/>
+                    <tabBarItem key="tabBarItem" title="User" image="person" catalog="system" selectedImage="person.fill" id="aKE-4n-mc1"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ccm-w1-JLI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -49,7 +49,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="RSV-st-t8N"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Board" id="yT4-e8-P95"/>
+                    <tabBarItem key="tabBarItem" title="Board" image="text.bubble" catalog="system" selectedImage="text.bubble.fill" id="yT4-e8-P95"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jU6-RB-WO4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -65,7 +65,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="BN9-ZG-2Wu"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Main" id="EbH-cq-8Sk"/>
+                    <tabBarItem key="tabBarItem" title="Main" image="house" catalog="system" selectedImage="house.fill" id="EbH-cq-8Sk"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0ln-38-gam" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -92,4 +92,14 @@
             <point key="canvasLocation" x="-192" y="-128"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="calendar" catalog="system" width="128" height="106"/>
+        <image name="calendar.circle.fill" catalog="system" width="128" height="121"/>
+        <image name="house" catalog="system" width="128" height="110"/>
+        <image name="house.fill" catalog="system" width="128" height="106"/>
+        <image name="person" catalog="system" width="128" height="117"/>
+        <image name="person.fill" catalog="system" width="128" height="120"/>
+        <image name="text.bubble" catalog="system" width="128" height="110"/>
+        <image name="text.bubble.fill" catalog="system" width="128" height="110"/>
+    </resources>
 </document>
