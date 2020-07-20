@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -13,6 +13,9 @@
 		1185804924C4416F00890181 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1185804724C4416F00890181 /* Main.storyboard */; };
 		1185804B24C4417100890181 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1185804A24C4417100890181 /* Assets.xcassets */; };
 		1185804E24C4417100890181 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1185804C24C4417100890181 /* LaunchScreen.storyboard */; };
+		118ADE0324C51CCE008F8921 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 118ADE0224C51CCE008F8921 /* GoogleService-Info.plist */; };
+		118ADE0524C52180008F8921 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 118ADE0424C52180008F8921 /* LoginViewController.swift */; };
+		2F12068DE382B8273FAAB5BC /* Pods_CocoNavi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC5C3E9E15FC66D98CCE29BE /* Pods_CocoNavi.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +27,11 @@
 		1185804A24C4417100890181 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1185804D24C4417100890181 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1185804F24C4417100890181 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		118ADE0224C51CCE008F8921 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		118ADE0424C52180008F8921 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		3584C418A29BC5EAAB98D3B2 /* Pods-CocoNavi.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CocoNavi.release.xcconfig"; path = "Target Support Files/Pods-CocoNavi/Pods-CocoNavi.release.xcconfig"; sourceTree = "<group>"; };
+		5FF740B05B4E10F77AECD007 /* Pods-CocoNavi.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CocoNavi.debug.xcconfig"; path = "Target Support Files/Pods-CocoNavi/Pods-CocoNavi.debug.xcconfig"; sourceTree = "<group>"; };
+		AC5C3E9E15FC66D98CCE29BE /* Pods_CocoNavi.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CocoNavi.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +39,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2F12068DE382B8273FAAB5BC /* Pods_CocoNavi.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -42,6 +51,8 @@
 			children = (
 				1185804024C4416F00890181 /* CocoNavi */,
 				1185803F24C4416F00890181 /* Products */,
+				BED107B587982C5CEBB9AFDD /* Pods */,
+				E1A16EC22B6D0D8FB91AA857 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -62,9 +73,28 @@
 				1185804724C4416F00890181 /* Main.storyboard */,
 				1185804A24C4417100890181 /* Assets.xcassets */,
 				1185804C24C4417100890181 /* LaunchScreen.storyboard */,
+				118ADE0224C51CCE008F8921 /* GoogleService-Info.plist */,
 				1185804F24C4417100890181 /* Info.plist */,
+				118ADE0424C52180008F8921 /* LoginViewController.swift */,
 			);
 			path = CocoNavi;
+			sourceTree = "<group>";
+		};
+		BED107B587982C5CEBB9AFDD /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				5FF740B05B4E10F77AECD007 /* Pods-CocoNavi.debug.xcconfig */,
+				3584C418A29BC5EAAB98D3B2 /* Pods-CocoNavi.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		E1A16EC22B6D0D8FB91AA857 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				AC5C3E9E15FC66D98CCE29BE /* Pods_CocoNavi.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -74,9 +104,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1185805224C4417100890181 /* Build configuration list for PBXNativeTarget "CocoNavi" */;
 			buildPhases = (
+				6C5A814966C6AE6772FF4A79 /* [CP] Check Pods Manifest.lock */,
 				1185803A24C4416F00890181 /* Sources */,
 				1185803B24C4416F00890181 /* Frameworks */,
 				1185803C24C4416F00890181 /* Resources */,
+				D7EB6DD1B2EB2A27609A96F8 /* [CP] Embed Pods Frameworks */,
+				E197353EC994F1A418305B40 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -125,6 +158,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				118ADE0324C51CCE008F8921 /* GoogleService-Info.plist in Resources */,
 				1185804E24C4417100890181 /* LaunchScreen.storyboard in Resources */,
 				1185804B24C4417100890181 /* Assets.xcassets in Resources */,
 				1185804924C4416F00890181 /* Main.storyboard in Resources */,
@@ -133,11 +167,71 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		6C5A814966C6AE6772FF4A79 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-CocoNavi-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D7EB6DD1B2EB2A27609A96F8 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CocoNavi/Pods-CocoNavi-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CocoNavi/Pods-CocoNavi-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CocoNavi/Pods-CocoNavi-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E197353EC994F1A418305B40 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CocoNavi/Pods-CocoNavi-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CocoNavi/Pods-CocoNavi-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CocoNavi/Pods-CocoNavi-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		1185803A24C4416F00890181 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				118ADE0524C52180008F8921 /* LoginViewController.swift in Sources */,
 				1185804624C4416F00890181 /* ViewController.swift in Sources */,
 				1185804224C4416F00890181 /* AppDelegate.swift in Sources */,
 				1185804424C4416F00890181 /* SceneDelegate.swift in Sources */,
@@ -282,6 +376,7 @@
 		};
 		1185805324C4417100890181 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5FF740B05B4E10F77AECD007 /* Pods-CocoNavi.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -299,6 +394,7 @@
 		};
 		1185805424C4417100890181 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3584C418A29BC5EAAB98D3B2 /* Pods-CocoNavi.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="hyY-Oa-ds5">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="zUt-WZ-dLd">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -54,6 +54,39 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jU6-RB-WO4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-625" y="623"/>
+        </scene>
+        <!--Login View Controller-->
+        <scene sceneID="Ugc-ee-wmW">
+            <objects>
+                <viewController id="zUt-WZ-dLd" customClass="LoginViewController" customModule="CocoNavi" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="jfo-SB-ccQ">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gdC-KI-2OT">
+                                <rect key="frame" x="30" y="732" width="354" height="30"/>
+                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="15"/>
+                                <state key="normal" title="Google Login"/>
+                                <connections>
+                                    <action selector="googleLoginTapped:" destination="zUt-WZ-dLd" eventType="touchUpInside" id="a3l-wg-sW3"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="eKM-93-Hdn" firstAttribute="bottom" secondItem="gdC-KI-2OT" secondAttribute="bottom" constant="100" id="HSb-z7-z8v"/>
+                            <constraint firstItem="eKM-93-Hdn" firstAttribute="trailing" secondItem="gdC-KI-2OT" secondAttribute="trailing" constant="30" id="JTU-Dh-z8a"/>
+                            <constraint firstItem="gdC-KI-2OT" firstAttribute="leading" secondItem="eKM-93-Hdn" secondAttribute="leading" constant="30" id="SBw-S0-qk5"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="eKM-93-Hdn"/>
+                    </view>
+                    <connections>
+                        <outlet property="googleLoginBtn" destination="gdC-KI-2OT" id="0eK-6B-5tA"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8Mm-5Z-XIf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2072.463768115942" y="-167.41071428571428"/>
         </scene>
         <!--Main-->
         <scene sceneID="uru-gU-EPS">
