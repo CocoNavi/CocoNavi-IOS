@@ -16,7 +16,7 @@ class MainViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        print(Auth.auth().currentUser)
         self.email.text = Auth.auth().currentUser?.email
     }
     
