@@ -30,7 +30,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate{
                 return
             }
         }
-//        let userId = user.userID                  // For client-side use only!
+
+        //        guard let main = self.storyboard?.instantiateViewController(withIdentifier: "Home") else{
+//            return
+//        }
+//
+//        //화면 전환 애니메이션을 설정합니다.
+//
+//        main.modalPresentationStyle = .fullScreen
+//        main.modalTransitionStyle = UIModalTransitionStyle.coverVertical
+//
+//        //인자값으로 다음 뷰 컨트롤러를 넣고 present 메소드를 호출합니다.
+//        self.present(main, animated: true)
+        //        let userId = user.userID                  // For client-side use only!
 //        let idToken = user.authentication.idToken // Safe to send to the server
 //        let fullName = user.profile.name
 //        let givenName = user.profile.givenName

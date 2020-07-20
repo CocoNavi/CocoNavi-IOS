@@ -9,6 +9,7 @@
 import UIKit
 import Firebase
 import GoogleSignIn
+import FirebaseAuth
 
 class LoginViewController: UIViewController, GIDSignInDelegate{
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
@@ -22,6 +23,15 @@ class LoginViewController: UIViewController, GIDSignInDelegate{
     override func viewDidLoad() {
         super.viewDidLoad()
         GIDSignIn.sharedInstance()?.presentingViewController = self
+        
+        Auth.auth().addStateDidChangeListener({(user, error) in
+            if user != nil{
+                self.performSegue(withIdentifier: "Home", sender: nil)
+            }
+            else{
+                
+            }
+        })
     }
 
     @IBAction func googleLoginTapped(_ sender: Any) {

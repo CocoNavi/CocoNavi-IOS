@@ -10,55 +10,103 @@
         <!--Calendar-->
         <scene sceneID="rSY-UV-cNh">
             <objects>
-                <viewController id="YrN-7v-xjD" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Calendar" id="YrN-7v-xjD" customClass="CalendarViewController" customModule="CocoNavi" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="SzY-0C-4nl">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Calendar" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sX1-gR-NpG">
+                                <rect key="frame" x="172.5" y="410.5" width="69" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="sX1-gR-NpG" firstAttribute="centerX" secondItem="SzY-0C-4nl" secondAttribute="centerX" id="Lrx-tP-TXp"/>
+                            <constraint firstItem="sX1-gR-NpG" firstAttribute="centerY" secondItem="SzY-0C-4nl" secondAttribute="centerY" id="esy-OX-sSP"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="xga-PE-vsY"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Calendar" image="calendar" catalog="system" selectedImage="calendar.circle.fill" id="RFE-QC-ivV"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x1r-fi-ePV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="317" y="623"/>
+            <point key="canvasLocation" x="1307" y="639"/>
         </scene>
         <!--User-->
         <scene sceneID="YeU-BW-pGr">
             <objects>
-                <viewController id="9cd-UK-WpJ" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="User" id="9cd-UK-WpJ" customClass="UserViewController" customModule="CocoNavi" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="vEE-WP-6EE">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="160" translatesAutoresizingMaskIntoConstraints="NO" id="E4C-vz-JRX">
+                                <rect key="frame" x="181" y="316" width="52" height="210.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="User" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BWm-SM-Ttv">
+                                        <rect key="frame" x="0.0" y="0.0" width="52" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sZT-St-s0o">
+                                        <rect key="frame" x="0.0" y="180.5" width="52" height="30"/>
+                                        <state key="normal" title="로그아웃"/>
+                                        <connections>
+                                            <action selector="logout:" destination="9cd-UK-WpJ" eventType="touchUpInside" id="zqW-py-gcm"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="E4C-vz-JRX" firstAttribute="centerY" secondItem="vEE-WP-6EE" secondAttribute="centerY" id="G2U-2n-XrC"/>
+                            <constraint firstItem="E4C-vz-JRX" firstAttribute="centerX" secondItem="vEE-WP-6EE" secondAttribute="centerX" id="mAH-TY-2qQ"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="c3X-z3-q1Y"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="User" image="person" catalog="system" selectedImage="person.fill" id="aKE-4n-mc1"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ccm-w1-JLI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1045" y="623"/>
+            <point key="canvasLocation" x="2650.7246376811595" y="638.83928571428567"/>
         </scene>
         <!--Board-->
         <scene sceneID="LJl-16-U6i">
             <objects>
-                <viewController id="aYc-xA-TFu" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Board" id="aYc-xA-TFu" customClass="BoardViewController" customModule="CocoNavi" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ZRx-2C-OES">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Board" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EGF-iD-6Jy">
+                                <rect key="frame" x="184" y="410.5" width="46" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="EGF-iD-6Jy" firstAttribute="centerY" secondItem="ZRx-2C-OES" secondAttribute="centerY" id="BWy-Tr-FWH"/>
+                            <constraint firstItem="EGF-iD-6Jy" firstAttribute="centerX" secondItem="ZRx-2C-OES" secondAttribute="centerX" id="amn-sw-yBl"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="RSV-st-t8N"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Board" image="text.bubble" catalog="system" selectedImage="text.bubble.fill" id="yT4-e8-P95"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jU6-RB-WO4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-625" y="623"/>
+            <point key="canvasLocation" x="-178" y="639"/>
         </scene>
-        <!--Login View Controller-->
+        <!--LoginView-->
         <scene sceneID="Ugc-ee-wmW">
             <objects>
-                <viewController id="zUt-WZ-dLd" customClass="LoginViewController" customModule="CocoNavi" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginView" title="LoginView" id="zUt-WZ-dLd" customClass="LoginViewController" customModule="CocoNavi" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="jfo-SB-ccQ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -81,34 +129,52 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="eKM-93-Hdn"/>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Item" id="o5R-o5-rKr"/>
                     <connections>
                         <outlet property="googleLoginBtn" destination="gdC-KI-2OT" id="0eK-6B-5tA"/>
+                        <segue destination="hyY-Oa-ds5" kind="show" identifier="Home" id="q02-qo-h2S"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8Mm-5Z-XIf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2219" y="-286"/>
+            <point key="canvasLocation" x="-738" y="-129"/>
         </scene>
         <!--Main-->
         <scene sceneID="uru-gU-EPS">
             <objects>
-                <viewController id="CG9-kT-xfe" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Main" id="CG9-kT-xfe" customClass="MainViewController" customModule="CocoNavi" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="7of-Un-ftb">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Main" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wOg-Ll-T5f">
+                                <rect key="frame" x="188.5" y="410.5" width="37" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="wOg-Ll-T5f" firstAttribute="centerX" secondItem="7of-Un-ftb" secondAttribute="centerX" id="ndS-Ll-6FG"/>
+                            <constraint firstItem="wOg-Ll-T5f" firstAttribute="centerY" secondItem="7of-Un-ftb" secondAttribute="centerY" id="qc3-zu-Qfv"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="BN9-ZG-2Wu"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Main" image="house" catalog="system" selectedImage="house.fill" id="EbH-cq-8Sk"/>
+                    <connections>
+                        <outlet property="email" destination="wOg-Ll-T5f" id="DAh-XG-aK7"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0ln-38-gam" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1709" y="624"/>
+            <point key="canvasLocation" x="-1406" y="639"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Home-->
         <scene sceneID="qeQ-0p-cXg">
             <objects>
-                <tabBarController id="hyY-Oa-ds5" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="Home" title="Home" id="hyY-Oa-ds5" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="02r-5e-qPy"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="mjs-1l-GfG">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -123,7 +189,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KQ7-kh-LGF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-192" y="-128"/>
+            <point key="canvasLocation" x="717.39130434782612" y="-128.57142857142856"/>
         </scene>
     </scenes>
     <resources>
