@@ -22,7 +22,6 @@ class LoginViewController: UIViewController, GIDSignInDelegate{
     override func viewDidLoad() {
         super.viewDidLoad()
         GIDSignIn.sharedInstance()?.presentingViewController = self
-        GIDSignIn.sharedInstance().signIn()
     }
 
     @IBAction func googleLoginTapped(_ sender: Any) {
