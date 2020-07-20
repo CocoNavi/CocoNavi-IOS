@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		113C9B1E24C574E900693BA1 /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 113C9B1D24C574E900693BA1 /* UserViewController.swift */; };
+		113C9B2024C5770900693BA1 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 113C9B1F24C5770900693BA1 /* MainViewController.swift */; };
+		113C9B2224C5771D00693BA1 /* BoardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 113C9B2124C5771D00693BA1 /* BoardViewController.swift */; };
+		113C9B2424C5772A00693BA1 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 113C9B2324C5772A00693BA1 /* CalendarViewController.swift */; };
 		1185804224C4416F00890181 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1185804124C4416F00890181 /* AppDelegate.swift */; };
 		1185804424C4416F00890181 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1185804324C4416F00890181 /* SceneDelegate.swift */; };
 		1185804624C4416F00890181 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1185804524C4416F00890181 /* ViewController.swift */; };
@@ -19,6 +23,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		113C9B1D24C574E900693BA1 /* UserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
+		113C9B1F24C5770900693BA1 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		113C9B2124C5771D00693BA1 /* BoardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardViewController.swift; sourceTree = "<group>"; };
+		113C9B2324C5772A00693BA1 /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		1185803E24C4416F00890181 /* CocoNavi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CocoNavi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1185804124C4416F00890181 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1185804324C4416F00890181 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -76,6 +84,10 @@
 				118ADE0224C51CCE008F8921 /* GoogleService-Info.plist */,
 				1185804F24C4417100890181 /* Info.plist */,
 				118ADE0424C52180008F8921 /* LoginViewController.swift */,
+				113C9B1D24C574E900693BA1 /* UserViewController.swift */,
+				113C9B1F24C5770900693BA1 /* MainViewController.swift */,
+				113C9B2124C5771D00693BA1 /* BoardViewController.swift */,
+				113C9B2324C5772A00693BA1 /* CalendarViewController.swift */,
 			);
 			path = CocoNavi;
 			sourceTree = "<group>";
@@ -231,8 +243,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				113C9B2424C5772A00693BA1 /* CalendarViewController.swift in Sources */,
+				113C9B2224C5771D00693BA1 /* BoardViewController.swift in Sources */,
 				118ADE0524C52180008F8921 /* LoginViewController.swift in Sources */,
+				113C9B1E24C574E900693BA1 /* UserViewController.swift in Sources */,
 				1185804624C4416F00890181 /* ViewController.swift in Sources */,
+				113C9B2024C5770900693BA1 /* MainViewController.swift in Sources */,
 				1185804224C4416F00890181 /* AppDelegate.swift in Sources */,
 				1185804424C4416F00890181 /* SceneDelegate.swift in Sources */,
 			);

@@ -6,6 +6,7 @@ target 'CocoNavi' do
   use_frameworks!
 
   # Pods for CocoNavi
+pod 'Firebase/Core'
 pod 'Firebase/Analytics'
 pod 'Firebase/Database'
 pod 'Firebase/Auth'
