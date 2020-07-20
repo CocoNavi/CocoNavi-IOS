@@ -24,12 +24,15 @@ class LoginViewController: UIViewController, GIDSignInDelegate{
         super.viewDidLoad()
         GIDSignIn.sharedInstance()?.presentingViewController = self
         
+//        if Auth.auth().currentUser != nil{
+//            self.performSegue(withIdentifier: "Home", sender: nil)
+//        }
         Auth.auth().addStateDidChangeListener({(user, error) in
-            if user != nil{
+            if Auth.auth().currentUser != nil{
                 self.performSegue(withIdentifier: "Home", sender: nil)
             }
             else{
-                
+
             }
         })
     }
