@@ -1,15 +1,15 @@
 //
 //  AppDelegate.swift
-//  CocoNavi
+//  test
 //
-//  Created by 우원진 on 2020/07/19.
+//  Created by 우원진 on 2020/07/20.
 //  Copyright © 2020 WooWonJin. All rights reserved.
 //
 
 import UIKit
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationc  Delegate {
+class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
 
@@ -34,4 +34,5 @@ class AppDelegate: UIResponder, UIApplicationc  Delegate {
 
 
 }
+
 
