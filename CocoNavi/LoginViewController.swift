@@ -24,12 +24,17 @@ class LoginViewController: UIViewController, GIDSignInDelegate{
         super.viewDidLoad()
         GIDSignIn.sharedInstance()?.presentingViewController = self
         
-//        if Auth.auth().currentUser != nil{
-//            self.performSegue(withIdentifier: "Home", sender: nil)
-//        }
         Auth.auth().addStateDidChangeListener({(user, error) in
             if Auth.auth().currentUser != nil{
-                self.performSegue(withIdentifier: "Home", sender: nil)
+                guard let main = self.storyboard?.instantiateViewController(withIdentifier: "Home") else{
+                    return
+                }
+                //화면 전환 애니메이션을 설정합니다.
+                main.modalPresentationStyle = .fullScreen
+                main.modalTransitionStyle = UIModalTransitionStyle.coverVertical
+                
+                //인자값으로 다음 뷰 컨트롤러를 넣고 present 메소드를 호출합니다.
+                self.present(main, animated: true)
             }
             else{
 
