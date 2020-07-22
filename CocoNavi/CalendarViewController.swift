@@ -14,6 +14,8 @@ class CalendarCell: UICollectionViewCell {
 
 class CalendarViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 
+    @IBOutlet weak var rightBtn: UIButton!
+    @IBOutlet weak var leftBtn: UIButton!
     @IBOutlet weak var yearLabel: UILabel!
     @IBOutlet weak var monthLabel: UILabel!
     @IBOutlet weak var CalendarCollectionView: UICollectionView!
@@ -43,7 +45,8 @@ class CalendarViewController: UIViewController, UICollectionViewDelegate, UIColl
         else{
             numOfDaysInMonth[1] = 28
         }
-        print("viewDidLoad!!")
+        self.leftBtn.tintColor = .black
+        self.rightBtn.tintColor = .black
         self.CalendarCollectionView.delegate = self
         self.CalendarCollectionView.dataSource = self
 //        self.CalendarCollectionView.reloadData()
@@ -90,7 +93,7 @@ class CalendarViewController: UIViewController, UICollectionViewDelegate, UIColl
                     cell.dateLabel.textColor = .black
                 }
             cell.dateLabel.font = UIFont.boldSystemFont(ofSize: 12.0)
-            print(cell.dateLabel.text)
+            cell.dateLabel.layer.opacity = 0.8
         }
         else{
             let firstDay = self.getDayOfWeek("\(self.currentYear)-\(self.currentMonth)-01")!
@@ -135,7 +138,6 @@ class CalendarViewController: UIViewController, UICollectionViewDelegate, UIColl
                     cell.dateLabel.textColor = .blue
                 default:
                     cell.dateLabel.text = "\(numOfDaysInMonth[previousMonth-1]-firstDay+indexPath.row-5)"
-                    print("row : ", indexPath.row)
                     cell.dateLabel.textColor = .black
                 }
                 cell.dateLabel.font = UIFont.boldSystemFont(ofSize: 10.0)
@@ -168,13 +170,13 @@ class CalendarViewController: UIViewController, UICollectionViewDelegate, UIColl
         if(indexPath.row < 7){
             //월,화 ... 일
             let availableWidth = CalendarCollectionView.frame.width
-            widthPerItem = availableWidth / 7 - 1
+            widthPerItem = availableWidth / 7 - 2
             heightPerItem = widthPerItem / 2
         }
         else{
             //날짜
             let availableWidth = CalendarCollectionView.frame.width
-            widthPerItem = availableWidth / 7 - 1
+            widthPerItem = availableWidth / 7 - 2
             heightPerItem = CalendarCollectionView.frame.height / 7
         }
         
@@ -234,6 +236,7 @@ class CalendarViewController: UIViewController, UICollectionViewDelegate, UIColl
         for i in (0..<49){
             let cell = CalendarCollectionView.dequeueReusableCell(withReuseIdentifier: "CalendarCell", for: IndexPath.init(row: i, section: 0)) as! CalendarCell
             cell.dateLabel.text = ""
+            cell.dateLabel.layer.opacity = 1
         }
     }
     

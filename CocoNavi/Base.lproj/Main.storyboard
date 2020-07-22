@@ -108,7 +108,9 @@
                     <tabBarItem key="tabBarItem" title="Calendar" image="calendar" catalog="system" selectedImage="calendar.circle.fill" id="RFE-QC-ivV"/>
                     <connections>
                         <outlet property="CalendarCollectionView" destination="r4s-H9-FrB" id="3qx-Ia-AIq"/>
+                        <outlet property="leftBtn" destination="2oI-cI-Nmm" id="gjz-W2-m9C"/>
                         <outlet property="monthLabel" destination="1TI-Ro-2YN" id="d2v-LI-ASo"/>
+                        <outlet property="rightBtn" destination="vaR-wy-O3A" id="VPx-Ff-cpi"/>
                         <outlet property="yearLabel" destination="Vtf-N4-uq2" id="3g3-AS-oKC"/>
                     </connections>
                 </viewController>
