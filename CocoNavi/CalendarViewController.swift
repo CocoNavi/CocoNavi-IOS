@@ -13,17 +13,19 @@ class CalendarCell: UICollectionViewCell {
 }
 
 class CalendarViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
-
+    
     @IBOutlet weak var rightBtn: UIButton!
     @IBOutlet weak var leftBtn: UIButton!
     @IBOutlet weak var yearLabel: UILabel!
     @IBOutlet weak var monthLabel: UILabel!
     @IBOutlet weak var CalendarCollectionView: UICollectionView!
     
+    var dateAtIndex = [String](repeating: "", count: 42)
     var numOfDaysInMonth : [Int] = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
     var currentYear : Int = -1
     var currentMonth : Int = -1
     var todayDate : Int = -1
+    var firstDay : Int = -1
     
     func getDayOfWeek(_ today:String) -> Int? {
         let formatter  = DateFormatter()    // 1
@@ -39,6 +41,7 @@ class CalendarViewController: UIViewController, UICollectionViewDelegate, UIColl
         self.currentYear = Calendar.current.component(.year, from: Date())
         self.currentMonth = Calendar.current.component(.month, from: Date())
         self.todayDate = Calendar.current.component(.day, from: Date())
+        self.firstDay = self.getDayOfWeek("\(self.currentYear)-\(self.currentMonth)-01")!
         if(currentYear % 4 == 0){
             numOfDaysInMonth[1] = 29
         }
@@ -61,6 +64,25 @@ class CalendarViewController: UIViewController, UICollectionViewDelegate, UIColl
         self.CalendarCollectionView.addGestureRecognizer(rightSwipe)
         self.CalendarCollectionView.addGestureRecognizer(leftSwipe)
         
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        //캘린더 셀마다
+//        let cell = CalendarCollectionView.dequeueReusableCell(withReuseIdentifier: "CalendarCell", for: indexPath) as! CalendarCell
+        if(indexPath.row < 7){
+            print("Nothing happen : Day")
+        }
+        else if(indexPath.row-6 < self.firstDay){
+            print("Nothing happen : previous month")
+        }
+        else if(indexPath.row >= 6+firstDay+self.numOfDaysInMonth[self.currentMonth-1]){
+            print("Nothing happen : next month")
+        }
+        else{
+            print("tapped")
+            let date = "\(self.currentYear)-\(self.currentMonth)-\(self.dateAtIndex[indexPath.row-7])"
+            print(date)
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -105,7 +127,7 @@ class CalendarViewController: UIViewController, UICollectionViewDelegate, UIColl
             cell.dateLabel.layer.opacity = 0.8
         }
         else{
-            let firstDay = self.getDayOfWeek("\(self.currentYear)-\(self.currentMonth)-01")!
+            firstDay = self.getDayOfWeek("\(self.currentYear)-\(self.currentMonth)-01")!
             if((indexPath.row-6) >= firstDay && (indexPath.row-6) <= self.numOfDaysInMonth[self.currentMonth-1]+firstDay-1){
                 switch(indexPath.row % 7){
                 case 0:
@@ -121,7 +143,7 @@ class CalendarViewController: UIViewController, UICollectionViewDelegate, UIColl
                 cell.dateLabel.font = UIFont.boldSystemFont(ofSize: 10.0)
                 cell.dateLabel.layer.opacity = 0.8
             }
-            else if(indexPath.row-6 < firstDay){
+            else if(indexPath.row-6 < firstDay){ //전달
                 var previousYear = -1
                 var previousMonth = -1
                 if(self.currentMonth == 1){
@@ -153,7 +175,7 @@ class CalendarViewController: UIViewController, UICollectionViewDelegate, UIColl
                 cell.dateLabel.layer.opacity = 0.3
             }
             else{
-                switch(indexPath.row % 7){
+                switch(indexPath.row % 7){ //다음달
                 case 0:
                     cell.dateLabel.text = "\(indexPath.row-5-firstDay-numOfDaysInMonth[self.currentMonth-1])"
                     cell.dateLabel.textColor = .red
@@ -167,6 +189,7 @@ class CalendarViewController: UIViewController, UICollectionViewDelegate, UIColl
                 cell.dateLabel.font = UIFont.boldSystemFont(ofSize: 10.0)
                 cell.dateLabel.layer.opacity = 0.3
             }
+            self.dateAtIndex[indexPath.row-7] = cell.dateLabel.text!
         }
         cell.dateLabel.textAlignment = .center
         return cell
