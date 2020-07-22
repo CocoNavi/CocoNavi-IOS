@@ -52,6 +52,15 @@ class CalendarViewController: UIViewController, UICollectionViewDelegate, UIColl
 //        self.CalendarCollectionView.reloadData()
         self.yearLabel.text = "\(self.currentYear)"
         self.monthLabel.text = "\(self.currentMonth)월"
+        
+        //swipe
+        var rightSwipe : UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(slideRight))
+        rightSwipe.direction = .left
+        var leftSwipe : UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(slideLeft))
+        leftSwipe.direction = .right
+        self.CalendarCollectionView.addGestureRecognizer(rightSwipe)
+        self.CalendarCollectionView.addGestureRecognizer(leftSwipe)
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -194,7 +203,7 @@ class CalendarViewController: UIViewController, UICollectionViewDelegate, UIColl
             return 1
     }
     
-    func slideRight(){
+    @objc func slideRight(){
         if(self.currentMonth == 12){
             self.currentMonth = 1
             self.currentYear += 1
@@ -213,7 +222,7 @@ class CalendarViewController: UIViewController, UICollectionViewDelegate, UIColl
         self.CalendarCollectionView.reloadData()
     }
     
-    func slideLeft(){
+    @objc func slideLeft(){
         if(self.currentMonth == 1){
             self.currentMonth = 12
             self.currentYear -= 1
