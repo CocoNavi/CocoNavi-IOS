@@ -12,7 +12,7 @@ class CalendarCell: UICollectionViewCell {
     @IBOutlet weak var dateLabel: UILabel!
 }
 
-class CalendarViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+class CalendarViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
     
     @IBOutlet weak var rightBtn: UIButton!
     @IBOutlet weak var leftBtn: UIButton!
@@ -20,6 +20,7 @@ class CalendarViewController: UIViewController, UICollectionViewDelegate, UIColl
     @IBOutlet weak var monthLabel: UILabel!
     @IBOutlet weak var CalendarCollectionView: UICollectionView!
     
+
     var dateAtIndex = [String](repeating: "", count: 42)
     var numOfDaysInMonth : [Int] = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
     var currentYear : Int = -1
@@ -69,7 +70,6 @@ class CalendarViewController: UIViewController, UICollectionViewDelegate, UIColl
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         //캘린더 셀마다
-//        let cell = CalendarCollectionView.dequeueReusableCell(withReuseIdentifier: "CalendarCell", for: indexPath) as! CalendarCell
         if(indexPath.row < 7){
             print("Nothing happen : Day")
         }
@@ -80,9 +80,14 @@ class CalendarViewController: UIViewController, UICollectionViewDelegate, UIColl
             print("Nothing happen : next month")
         }
         else{
-            print("tapped")
-            let date = "\(self.currentYear)-\(self.currentMonth)-\(self.dateAtIndex[indexPath.row-7])"
-            print(date)
+//            let cell = CalendarCollectionView.dequeueReusableCell(withReuseIdentifier: "CalendarCell", for: indexPath) as! CalendarCell
+
+            let nextView = self.storyboard?.instantiateViewController(withIdentifier: "CalendarDetailViewController") as! CalendarDetailViewController
+            nextView.year = "\(self.currentYear)"
+            nextView.month = "\(self.currentMonth)"
+            nextView.date = "\(self.dateAtIndex[indexPath.row-7])"
+
+            self.navigationController?.pushViewController(nextView, animated: true)
         }
     }
     
@@ -95,7 +100,7 @@ class CalendarViewController: UIViewController, UICollectionViewDelegate, UIColl
         cell.dateLabel.translatesAutoresizingMaskIntoConstraints = true
         cell.dateLabel.backgroundColor = .white
         cell.dateLabel.textColor = .black
-        cell.dateLabel.layer.borderWidth = 0
+//        cell.dateLabel.layer.borderWidth = 0
 //        cell.dateLabel.topAnchor.constraint(equalTo: cell.topAnchor, constant: 0)
 //        cell.dateLabel.leftAnchor.constraint(equalTo: cell.leftAnchor, constant: 0)
 //        cell.dateLabel.rightAnchor.constraint(equalTo: cell.rightAnchor, constant: 0)
