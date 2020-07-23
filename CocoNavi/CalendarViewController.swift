@@ -26,6 +26,7 @@ class CalendarViewController: UIViewController, UICollectionViewDelegate, UIColl
     var currentMonth : Int = -1
     var todayDate : Int = -1
     var firstDay : Int = -1
+    var todayIndex : Int = -1
     
     func getDayOfWeek(_ today:String) -> Int? {
         let formatter  = DateFormatter()    // 1
@@ -92,10 +93,17 @@ class CalendarViewController: UIViewController, UICollectionViewDelegate, UIColl
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = CalendarCollectionView.dequeueReusableCell(withReuseIdentifier: "CalendarCell", for: indexPath) as! CalendarCell
         cell.dateLabel.translatesAutoresizingMaskIntoConstraints = true
+        cell.dateLabel.backgroundColor = .white
+        cell.dateLabel.textColor = .black
+        cell.dateLabel.layer.borderWidth = 0
 //        cell.dateLabel.topAnchor.constraint(equalTo: cell.topAnchor, constant: 0)
 //        cell.dateLabel.leftAnchor.constraint(equalTo: cell.leftAnchor, constant: 0)
 //        cell.dateLabel.rightAnchor.constraint(equalTo: cell.rightAnchor, constant: 0)
         cell.dateLabel.frame = CGRect(x: 0, y: 0, width: cell.frame.size.width, height: cell.frame.size.width/2)
+//        if(cell.dateLabel.backgroundColor != .white){
+//            cell.dateLabel.backgroundColor = .white
+//            cell.dateLabel.textColor = .black
+//        }
         if(indexPath.row < 7){
             switch(indexPath.row){
                 case 0:
@@ -191,6 +199,13 @@ class CalendarViewController: UIViewController, UICollectionViewDelegate, UIColl
             }
             self.dateAtIndex[indexPath.row-7] = cell.dateLabel.text!
         }
+        let today = indexPath.row-5-firstDay
+        if(self.todayDate == today && self.monthLabel.text! == "\(Calendar.current.component(.month, from: Date()))월" && self.yearLabel.text! == "\(Calendar.current.component(.year, from: Date()))"){
+            //rgb(251,106,2)
+            self.todayIndex = indexPath.row
+            cell.dateLabel.backgroundColor = .orange
+            cell.dateLabel.textColor = .white
+        }
         cell.dateLabel.textAlignment = .center
         return cell
     }
@@ -264,20 +279,19 @@ class CalendarViewController: UIViewController, UICollectionViewDelegate, UIColl
         self.CalendarCollectionView.reloadData()
     }
     
-    func deleteAll(){
-        for i in (0..<49){
-            let cell = CalendarCollectionView.dequeueReusableCell(withReuseIdentifier: "CalendarCell", for: IndexPath.init(row: i, section: 0)) as! CalendarCell
-            cell.dateLabel.text = ""
-            cell.dateLabel.layer.opacity = 1
-        }
-    }
+//    func deleteAll(){
+//        for i in (0..<49){
+//            let cell = CalendarCollectionView.dequeueReusableCell(withReuseIdentifier: "CalendarCell", for: IndexPath.init(row: i, section: 0)) as! CalendarCell
+//            cell.dateLabel.textColor = .black
+//            cell.dateLabel.text = ""
+//            cell.dateLabel.backgroundColor = .white
+//        }
+//    }
     
     @IBAction func slideRightBtn(_ sender: Any) {
-//        deleteAll()
         slideRight()
     }
     @IBAction func slideLeftBtn(_ sender: Any) {
-//        deleteAll()
         slideLeft()
     }
 }
