@@ -9,9 +9,12 @@
 import UIKit
 import Firebase
 import FirebaseAuth
+import Alamofire
 
 class UserViewController: UIViewController {
 
+    let URL = "http://127.0.0.1:8000/"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -27,14 +30,26 @@ class UserViewController: UIViewController {
         dismiss(animated: true, completion: nil)
     }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @IBAction func addPet(_ sender: Any) {
+        let headers : HTTPHeaders = [ "Accept":"application/json" ,  "Content-Type": "application/json", "X-CSRFToken": "", "charset":"utf-8"]
+        let params : [String:Any] = ["uid" : Auth.auth().currentUser?.uid,
+                      "name" : "우누리",
+                      "kind" : "강아지",
+                      "species" : "말티즈",
+                      "birthday" : "2019-05-08",
+                      "gender" : "MALE",
+                      "is_visible" : true,
+                      "avatar" : "",
+                      "profile" : "우누리이"]
+        //info.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed) ?? ""
+        let url = self.URL+"pets/add-pets/"
+        AF.request(url, method: .post, parameters: params, encoding: JSONEncoding.default, headers: headers).responseJSON { response in
+            switch(response.result){
+            case .success(let value):
+                print(value)
+            case .failure(let error):
+                print(error)
+            }
+        }
     }
-    */
-
 }

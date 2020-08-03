@@ -21,6 +21,7 @@
 		1185804E24C4417100890181 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1185804C24C4417100890181 /* LaunchScreen.storyboard */; };
 		118ADE0324C51CCE008F8921 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 118ADE0224C51CCE008F8921 /* GoogleService-Info.plist */; };
 		118ADE0524C52180008F8921 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 118ADE0424C52180008F8921 /* LoginViewController.swift */; };
+		119EAA8D24D78F660035DA95 /* Pet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 119EAA8C24D78F660035DA95 /* Pet.swift */; };
 		2F12068DE382B8273FAAB5BC /* Pods_CocoNavi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC5C3E9E15FC66D98CCE29BE /* Pods_CocoNavi.framework */; };
 /* End PBXBuildFile section */
 
@@ -41,6 +42,7 @@
 		1185804F24C4417100890181 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		118ADE0224C51CCE008F8921 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		118ADE0424C52180008F8921 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		119EAA8C24D78F660035DA95 /* Pet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pet.swift; sourceTree = "<group>"; };
 		3584C418A29BC5EAAB98D3B2 /* Pods-CocoNavi.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CocoNavi.release.xcconfig"; path = "Target Support Files/Pods-CocoNavi/Pods-CocoNavi.release.xcconfig"; sourceTree = "<group>"; };
 		5FF740B05B4E10F77AECD007 /* Pods-CocoNavi.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CocoNavi.debug.xcconfig"; path = "Target Support Files/Pods-CocoNavi/Pods-CocoNavi.debug.xcconfig"; sourceTree = "<group>"; };
 		AC5C3E9E15FC66D98CCE29BE /* Pods_CocoNavi.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CocoNavi.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -94,6 +96,7 @@
 				113C9B2324C5772A00693BA1 /* CalendarViewController.swift */,
 				1123377024C91E4800DDA9A4 /* CalendarDetailViewController.swift */,
 				1123377224C9549600DDA9A4 /* EventAddViewController.swift */,
+				119EAA8C24D78F660035DA95 /* Pet.swift */,
 			);
 			path = CocoNavi;
 			sourceTree = "<group>";
@@ -258,6 +261,7 @@
 				113C9B2024C5770900693BA1 /* MainViewController.swift in Sources */,
 				1123377324C9549600DDA9A4 /* EventAddViewController.swift in Sources */,
 				1185804224C4416F00890181 /* AppDelegate.swift in Sources */,
+				119EAA8D24D78F660035DA95 /* Pet.swift in Sources */,
 				1185804424C4416F00890181 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

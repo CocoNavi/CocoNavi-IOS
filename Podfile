@@ -8,7 +8,7 @@ target 'CocoNavi' do
   # Pods for CocoNavi
 pod 'Firebase/Core'
 pod 'Firebase/Analytics'
-pod 'Firebase/Database'
 pod 'Firebase/Auth'
 pod 'GoogleSignIn'
+pod 'Alamofire', '~> 5.1'
 end
