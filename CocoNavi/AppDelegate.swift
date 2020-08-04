@@ -10,9 +10,11 @@ import UIKit
 import Firebase
 import GoogleSignIn
 import FirebaseAuth
+import Alamofire
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate{
+    
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
         if let error = error {
           if (error as NSError).code == GIDSignInErrorCode.hasNoAuthInKeychain.rawValue {
@@ -42,14 +44,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate{
 //
 //        //인자값으로 다음 뷰 컨트롤러를 넣고 present 메소드를 호출합니다.
 //        self.present(main, animated: true)
-        //        let userId = user.userID                  // For client-side use only!
-//        let idToken = user.authentication.idToken // Safe to send to the server
+//        let userId = user.userID                  // For client-side use only!
 //        let fullName = user.profile.name
-//        let givenName = user.profile.givenName
-//        let familyName = user.profile.familyName
 //        let email = user.profile.email
-//        print("user : ", userId)
-//        print("name : ", fullName)
+        
     }
 
     func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!, withError error: Error!) {
@@ -68,6 +66,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate{
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         FirebaseApp.configure()
+//        let authUI = FUIAuth.defaultAuthUI()
+//        authUI?.delegate = self
         GIDSignIn.sharedInstance().clientID = FirebaseApp.app()?.options.clientID
         GIDSignIn.sharedInstance().delegate = self
         return true

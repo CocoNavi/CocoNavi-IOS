@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Alamofire
+import FirebaseAuth
 
 class CalendarCell: UICollectionViewCell {
     @IBOutlet weak var dateLabel: UILabel!
@@ -20,6 +22,48 @@ class CalendarViewController: UIViewController, UICollectionViewDelegate, UIColl
     @IBOutlet weak var monthLabel: UILabel!
     @IBOutlet weak var CalendarCollectionView: UICollectionView!
     
+    let URL = "http://127.0.0.1:8000/"
+    var pets : Array<Pet> = []
+    
+    func getPets(){
+        //유저의 펫정보를 가져온다.
+        let headers : HTTPHeaders = [ "Accept":"application/json" ,  "Content-Type": "application/json", "X-CSRFToken": "", "charset":"utf-8"]
+        let params = ["uid" : Auth.auth().currentUser?.uid,
+                      ]
+        //info.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed) ?? ""
+        let url = self.URL+"pets/get-pets/"
+        AF.request(url, method: .post, parameters: params, encoding: JSONEncoding.default, headers: headers).responseJSON { response in
+            switch(response.result){
+            case .success(let value):
+                let responseList = value as! Array<AnyObject>
+                for (index, _) in responseList.enumerated(){
+                    let name = responseList[index]["name"] as! String
+                    let kind = responseList[index]["pet_kinds"] as! String
+                    var species = ""
+//                    print(responseList[index])
+                    if(kind == "강아지"){
+                        species = responseList[index]["dog_kind"] as! String
+                    }
+                    else if(kind == "고양이"){
+                        species = responseList[index]["cat_kind"] as! String
+                    }
+                    else{
+                        print("Error : This kind does not exists!")
+                    }
+                    let birthday = responseList[index]["birthday"] as! String
+                    let gender = responseList[index]["gender"] as! String
+                    let is_visible = responseList[index]["is_visible"] as! Bool
+                    let profile = responseList[index]["profile"] as! String
+                    let avatar_url = responseList[index]["pet_avatar"] as! String
+                    self.pets.insert(Pet(name: name, kind: kind, species: species, birthday: birthday, gender: gender, is_visible: is_visible, avatar_url: avatar_url, profile: profile), at: index)
+                    
+                }
+                
+            case .failure(let error):
+                print("Something Wrong")
+            }
+        }
+    }
 
     var dateAtIndex = [String](repeating: "", count: 42)
     var numOfDaysInMonth : [Int] = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
@@ -68,6 +112,10 @@ class CalendarViewController: UIViewController, UICollectionViewDelegate, UIColl
         
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        getPets()
+    }
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         //캘린더 셀마다
         if(indexPath.row < 7){
@@ -86,10 +134,11 @@ class CalendarViewController: UIViewController, UICollectionViewDelegate, UIColl
             nextView.year = "\(self.currentYear)"
             nextView.month = "\(self.currentMonth)"
             nextView.date = "\(self.dateAtIndex[indexPath.row-7])"
-
+            nextView.pets = self.pets
             self.navigationController?.pushViewController(nextView, animated: true)
         }
     }
+    
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 49
@@ -208,7 +257,8 @@ class CalendarViewController: UIViewController, UICollectionViewDelegate, UIColl
         if(self.todayDate == today && self.monthLabel.text! == "\(Calendar.current.component(.month, from: Date()))월" && self.yearLabel.text! == "\(Calendar.current.component(.year, from: Date()))"){
             //rgb(251,106,2)
             self.todayIndex = indexPath.row
-            cell.dateLabel.backgroundColor = .orange
+//            UIColor(red: 251.0/255.0, green: 106.0/255.0, blue: 2.0/255.0, alpha: 1.0)
+            cell.dateLabel.backgroundColor = UIColor(red: 251.0/255.0, green: 106.0/255.0, blue: 2.0/255.0, alpha: 1.0)
             cell.dateLabel.textColor = .white
         }
         cell.dateLabel.textAlignment = .center

@@ -14,6 +14,8 @@ class CalendarDetailViewController: UIViewController{
     var year : String = ""
     var month : String = ""
     var date : String = ""
+    var pets : Array<Pet> = []
+    
     @IBOutlet weak var calendarDetailTable: UITableView!
     
     override func viewDidLoad() {
@@ -38,6 +40,10 @@ class CalendarDetailViewController: UIViewController{
 
     @objc func addBtnClicked(){
         let addView = self.storyboard?.instantiateViewController(identifier: "EventAddView") as! EventAddViewController
+        addView.year = self.year
+        addView.month = self.month
+        addView.day = self.date
+        addView.pets = self.pets
         self.navigationController?.pushViewController(addView, animated: true)
     }
 

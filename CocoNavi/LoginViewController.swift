@@ -16,14 +16,17 @@ class LoginViewController: UIViewController, GIDSignInDelegate{
         
     }
     
-    
-
     @IBOutlet weak var googleLoginBtn: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         GIDSignIn.sharedInstance()?.presentingViewController = self
-        
+//        do{
+//            try Auth.auth().signOut()
+//        }catch {
+//            
+//        }
+//        dismiss(animated: true, completion: nil)
         Auth.auth().addStateDidChangeListener({(user, error) in
             if Auth.auth().currentUser != nil{
                 guard let main = self.storyboard?.instantiateViewController(withIdentifier: "Home") else{
@@ -32,7 +35,7 @@ class LoginViewController: UIViewController, GIDSignInDelegate{
                 //화면 전환 애니메이션을 설정합니다.
                 main.modalPresentationStyle = .fullScreen
                 main.modalTransitionStyle = UIModalTransitionStyle.coverVertical
-                
+
                 //인자값으로 다음 뷰 컨트롤러를 넣고 present 메소드를 호출합니다.
                 self.present(main, animated: true)
             }
