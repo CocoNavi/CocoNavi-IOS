@@ -10,7 +10,6 @@ import UIKit
 import Firebase
 import GoogleSignIn
 import FirebaseAuth
-import FirebaseUI
 
 class LoginViewController: UIViewController, GIDSignInDelegate{
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
@@ -22,7 +21,12 @@ class LoginViewController: UIViewController, GIDSignInDelegate{
     override func viewDidLoad() {
         super.viewDidLoad()
         GIDSignIn.sharedInstance()?.presentingViewController = self
-
+//        do{
+//            try Auth.auth().signOut()
+//        }catch {
+//            
+//        }
+//        dismiss(animated: true, completion: nil)
         Auth.auth().addStateDidChangeListener({(user, error) in
             if Auth.auth().currentUser != nil{
                 guard let main = self.storyboard?.instantiateViewController(withIdentifier: "Home") else{

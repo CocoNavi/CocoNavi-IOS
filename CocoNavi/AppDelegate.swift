@@ -10,7 +10,6 @@ import UIKit
 import Firebase
 import GoogleSignIn
 import FirebaseAuth
-import FirebaseUI
 import Alamofire
 
 @UIApplicationMain

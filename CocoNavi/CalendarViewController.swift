@@ -257,7 +257,8 @@ class CalendarViewController: UIViewController, UICollectionViewDelegate, UIColl
         if(self.todayDate == today && self.monthLabel.text! == "\(Calendar.current.component(.month, from: Date()))월" && self.yearLabel.text! == "\(Calendar.current.component(.year, from: Date()))"){
             //rgb(251,106,2)
             self.todayIndex = indexPath.row
-            cell.dateLabel.backgroundColor = .orange
+//            UIColor(red: 251.0/255.0, green: 106.0/255.0, blue: 2.0/255.0, alpha: 1.0)
+            cell.dateLabel.backgroundColor = UIColor(red: 251.0/255.0, green: 106.0/255.0, blue: 2.0/255.0, alpha: 1.0)
             cell.dateLabel.textColor = .white
         }
         cell.dateLabel.textAlignment = .center

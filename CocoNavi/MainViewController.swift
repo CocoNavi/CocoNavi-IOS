@@ -22,6 +22,7 @@ class MainViewController: UIViewController {
             let headers : HTTPHeaders = [ "Accept":"application/json" ,  "Content-Type": "application/json", "X-CSRFToken": "", "charset":"utf-8"]
             let params = ["uid" : Auth.auth().currentUser?.uid,
                           ]
+            print("uid : ", Auth.auth().currentUser?.uid)
             //info.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed) ?? ""
             let url = self.URL+"pets/get-pets/"
             AF.request(url, method: .post, parameters: params, encoding: JSONEncoding.default, headers: headers).responseJSON { response in
@@ -52,7 +53,7 @@ class MainViewController: UIViewController {
                     }
                     
                 case .failure(let error):
-                    print("Something Wrong")
+                    print("Pet Does not exists!!")
                 }
             }
         }
@@ -60,7 +61,6 @@ class MainViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        getPets()
         self.email.text = Auth.auth().currentUser?.email
         let username = Auth.auth().currentUser?.email!
         let userUrl = "users/login/google/"
@@ -78,7 +78,7 @@ class MainViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        print("Pets : ", self.Pets)
+        getPets()
 //        UserDefaults.standard.set(Pets, forKey: "pets_list")
     }
     
