@@ -10,11 +10,18 @@ import UIKit
 import Alamofire
 import FirebaseAuth
 
-class CalendarCell: UICollectionViewCell {
+class CalendarCell: UICollectionViewCell{
+    
     @IBOutlet weak var dateLabel: UILabel!
 }
 
 class CalendarViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
+    
+    struct Event1{
+        var day : Int
+        var pet : String
+        var title : String
+    }
     
     @IBOutlet weak var rightBtn: UIButton!
     @IBOutlet weak var leftBtn: UIButton!
@@ -24,6 +31,38 @@ class CalendarViewController: UIViewController, UICollectionViewDelegate, UIColl
     
     let URL = "http://127.0.0.1:8000/"
     var pets : Array<Pet> = []
+    var events = [[Event1?]](repeating: Array(repeating: nil, count: 0),count: 31)
+    var month = ""
+    
+    func getEvents(){
+        let headers : HTTPHeaders = [ "Accept":"application/json" ,  "Content-Type": "application/json", "X-CSRFToken": "", "charset":"utf-8"]
+        let params = ["uid" : Auth.auth().currentUser?.uid,
+                      "year" : "\(self.currentYear)",
+                      "month" : "\(self.currentMonth)",
+                      ]
+        //info.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed) ?? ""
+        let url = self.URL+"events/get-events-month/"
+        AF.request(url, method: .post, parameters: params, encoding: JSONEncoding.default, headers: headers).responseJSON { response in
+            switch(response.result){
+            case .success(let value):
+                for i in 0..<31{
+                    self.events[i].removeAll()
+                }
+                let responseList = value as! Array<AnyObject>
+                for (index, _) in responseList.enumerated(){
+                    let dayStr = responseList[index]["day"] as! String
+                    let day = Int(dayStr)
+                    let title = responseList[index]["title"] as! String
+                    let pet = responseList[index]["pet_name"] as! String
+                    let event = Event1(day: day!, pet: pet, title: title)
+                    self.events[day!-1].append(event)
+                }
+                self.CalendarCollectionView.reloadData()
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
     
     func getPets(){
         //유저의 펫정보를 가져온다.
@@ -33,6 +72,7 @@ class CalendarViewController: UIViewController, UICollectionViewDelegate, UIColl
         //info.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed) ?? ""
         let url = self.URL+"pets/get-pets/"
         AF.request(url, method: .post, parameters: params, encoding: JSONEncoding.default, headers: headers).responseJSON { response in
+            self.pets.removeAll()
             switch(response.result){
             case .success(let value):
                 let responseList = value as! Array<AnyObject>
@@ -94,6 +134,7 @@ class CalendarViewController: UIViewController, UICollectionViewDelegate, UIColl
         else{
             numOfDaysInMonth[1] = 28
         }
+//        getEvents()
         self.leftBtn.tintColor = .black
         self.rightBtn.tintColor = .black
         self.CalendarCollectionView.delegate = self
@@ -109,10 +150,11 @@ class CalendarViewController: UIViewController, UICollectionViewDelegate, UIColl
         leftSwipe.direction = .right
         self.CalendarCollectionView.addGestureRecognizer(rightSwipe)
         self.CalendarCollectionView.addGestureRecognizer(leftSwipe)
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        getEvents()
+        print("events : ", self.events)
         getPets()
     }
     
@@ -189,6 +231,11 @@ class CalendarViewController: UIViewController, UICollectionViewDelegate, UIColl
             cell.dateLabel.layer.opacity = 0.8
         }
         else{
+            for view in cell.subviews{
+                if(view.tag == 100){
+                    view.removeFromSuperview()
+                }
+            }
             firstDay = self.getDayOfWeek("\(self.currentYear)-\(self.currentMonth)-01")!
             if((indexPath.row-6) >= firstDay && (indexPath.row-6) <= self.numOfDaysInMonth[self.currentMonth-1]+firstDay-1){
                 switch(indexPath.row % 7){
@@ -201,6 +248,30 @@ class CalendarViewController: UIViewController, UICollectionViewDelegate, UIColl
                 default:
                     cell.dateLabel.text = "\(indexPath.row-5-firstDay)"
                     cell.dateLabel.textColor = .black
+                }
+                
+//                indexPath.row-5-firstDay == 날짜(day) 21, 5개 까지 나타내기
+                let count = events[indexPath.row-5-firstDay-1].count > 5 ? 5 : events[indexPath.row-5-firstDay-1].count
+                let restHeight = cell.bounds.height - cell.dateLabel.frame.size.height
+                let heightPerLabel = restHeight / 5 - 1
+                var labelCount = 0
+                for day in 0..<count{
+                    let frame = CGRect(x: 3, y: cell.dateLabel.frame.size.height+heightPerLabel*CGFloat(labelCount)+CGFloat(labelCount+1), width: cell.bounds.width-6, height: heightPerLabel)
+                    let label = UILabel(frame: frame)
+                    label.layer.masksToBounds = true
+                    label.backgroundColor = UIColor(red: 251.0/255.0, green: 106.0/255.0, blue: 2.0/255.0, alpha: 1.0)
+                    label.tag = 100
+                    label.layer.cornerRadius = heightPerLabel/3
+                    label.text = "\(events[indexPath.row-5-firstDay-1][day]!.title)(\(events[indexPath.row-5-firstDay-1][day]!.pet))"
+                    if(heightPerLabel > 10){
+                        label.font = label.font.withSize(10)
+                    }
+                    else{
+                        label.font = label.font.withSize(heightPerLabel)
+                    }
+                    label.textColor = .white
+                    labelCount += 1
+                    cell.addSubview(label)
                 }
                 cell.dateLabel.font = UIFont.boldSystemFont(ofSize: 10.0)
                 cell.dateLabel.layer.opacity = 0.8
@@ -312,7 +383,7 @@ class CalendarViewController: UIViewController, UICollectionViewDelegate, UIColl
         }
         self.yearLabel.text = "\(self.currentYear)"
         self.monthLabel.text = "\(self.currentMonth)월"
-        self.CalendarCollectionView.reloadData()
+        getEvents()
     }
     
     @objc func slideLeft(){
@@ -331,7 +402,7 @@ class CalendarViewController: UIViewController, UICollectionViewDelegate, UIColl
         }
         self.yearLabel.text = "\(self.currentYear)"
         self.monthLabel.text = "\(self.currentMonth)월"
-        self.CalendarCollectionView.reloadData()
+        getEvents()
     }
     
 //    func deleteAll(){

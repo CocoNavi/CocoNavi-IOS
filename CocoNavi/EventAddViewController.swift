@@ -20,6 +20,7 @@ class EventPetCell: UICollectionViewCell {
 }
 
 
+
 extension CALayer {
     func addBorder(_ arr_edge: [UIRectEdge], color: UIColor, width: CGFloat) {
         for edge in arr_edge {
@@ -56,6 +57,10 @@ class EventAddViewController: UIViewController, UICollectionViewDelegate, UIColl
     let URL = "http://127.0.0.1:8000/"
     var pets : Array<Pet> = []
     var petName = ""
+    var firstEventTitle = ""
+    var firstText = ""
+    var pet = ""
+    var pk = ""
     
     @IBOutlet weak var dateTextField: UITextField!
     @IBOutlet weak var titleCollectionView: UICollectionView!
@@ -94,8 +99,10 @@ class EventAddViewController: UIViewController, UICollectionViewDelegate, UIColl
             cell.petNameLabel.layer.borderWidth = 0.8
             cell.petNameLabel.layer.borderColor = UIColor(red: 0.5, green: 0.5, blue: 0.5, alpha: 1.0).cgColor
             cell.petNameLabel.layer.cornerRadius = 5
-            print("width : ", cell.bounds.width)
-            print("height : ", cell.bounds.height)
+            if(cell.petNameLabel.text == self.pet){
+                cell.petNameLabel.layer.borderWidth = 1.5
+                cell.petNameLabel.layer.borderColor = UIColor(red: 251.0/255.0, green: 106.0/255.0, blue: 2.0/255.0, alpha: 1.0).cgColor
+            }
             return cell
         }
         else{
@@ -149,6 +156,10 @@ class EventAddViewController: UIViewController, UICollectionViewDelegate, UIColl
             cell.titleImageView.layer.borderWidth = 0.5
             cell.titleImageView.layer.borderColor = CGColor(srgbRed: 0.5, green: 0.5, blue: 0.5, alpha: 1)
             cell.titleImageView.layer.cornerRadius = (cell.bounds.width-20) / 2
+            if(self.firstEventTitle == title){
+                cell.titleImageView.layer.borderWidth = 1.5
+                cell.titleImageView.layer.borderColor = UIColor(red: 251.0/255.0, green: 106.0/255.0, blue: 2.0/255.0, alpha: 1.0).cgColor
+            }
             return cell
         }
     }
@@ -166,7 +177,6 @@ class EventAddViewController: UIViewController, UICollectionViewDelegate, UIColl
             self.petName = cell.petNameLabel.text!
             cell.petNameLabel.layer.borderWidth = 1.5
             cell.petNameLabel.layer.borderColor = UIColor(red: 251.0/255.0, green: 106.0/255.0, blue: 2.0/255.0, alpha: 1.0).cgColor
-            print(self.petName)
         }
         else{
             for index in 0..<5{
@@ -228,15 +238,16 @@ class EventAddViewController: UIViewController, UICollectionViewDelegate, UIColl
     
     func placeholderSetting() {
             contentTextView.delegate = self // txtvReview가 유저가 선언한 outlet
-            contentTextView.text = "내용을 입력하세요."
-            contentTextView.textColor = UIColor.lightGray
-            
+            if(self.pk == ""){
+                contentTextView.text = "내용을 입력하세요."
+                contentTextView.textColor = UIColor.lightGray
+            }
         }
-        
+    
         
     // TextView Place Holder
     func textViewDidBeginEditing(_ textView: UITextView) {
-        if textView.textColor == UIColor.lightGray {
+        if (textView.textColor == UIColor.lightGray && self.pk == "") {
             textView.text = nil
             textView.textColor = UIColor.black
         }
@@ -244,7 +255,7 @@ class EventAddViewController: UIViewController, UICollectionViewDelegate, UIColl
     }
     // TextView Place Holder
     func textViewDidEndEditing(_ textView: UITextView) {
-        if textView.text.isEmpty {
+        if (textView.text.isEmpty && self.pk == "") {
             textView.text = "내용을 입력하세요."
             textView.textColor = UIColor.lightGray
         }
@@ -253,7 +264,6 @@ class EventAddViewController: UIViewController, UICollectionViewDelegate, UIColl
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("pets : " , pets)
         self.datePicker = UIDatePicker()
         datePicker?.locale = NSLocale(localeIdentifier: "ko_KO") as Locale
         datePicker?.datePickerMode = .date
@@ -335,6 +345,12 @@ class EventAddViewController: UIViewController, UICollectionViewDelegate, UIColl
         self.submitBtn.setTitleColor(.white, for: .normal)
         self.submitBtn.backgroundColor = UIColor(red: 251.0/255.0, green: 106.0/255.0, blue: 2.0/255.0, alpha: 1.0)
         
+        // Calendar Detailview에서 셀을 눌러서 이화면에 들어온 경우
+        if(self.pk != ""){
+            self.titleTextField.text = self.firstEventTitle
+            self.contentTextView.text = self.firstText
+            self.petName = self.pet
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
@@ -381,21 +397,55 @@ class EventAddViewController: UIViewController, UICollectionViewDelegate, UIColl
             print("제목을 입력해주세요")
         }
         else{
-            let headers : HTTPHeaders = [ "Accept":"application/json" ,  "Content-Type": "application/json", "X-CSRFToken": "", "charset":"utf-8"]
-            let params = ["uid": Auth.auth().currentUser?.uid,
-                          "pet_name": self.petName,
-                          "title": self.titleTextField.text!,
-                          "text": self.contentTextView.text!,
-                          "date": self.selectedDate
-                          ]
-            //info.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed) ?? ""
-            let url = self.URL+"events/add-events/"
-            AF.request(url, method: .post, parameters: params, encoding: JSONEncoding.default, headers: headers).responseJSON { response in
-                switch(response.result){
-                case .success(let value):
-                    print(value)
-                case .failure(let error):
-                    print("Error : Something Wrong")
+            if(self.pk == ""){ // 새로쓴글
+                let headers : HTTPHeaders = [ "Accept":"application/json" ,  "Content-Type": "application/json", "X-CSRFToken": "", "charset":"utf-8"]
+                var text_temp = ""
+                if(self.contentTextView.text! == "내용을 입력하세요."){
+                    text_temp = ""
+                }
+                else{
+                    text_temp = self.contentTextView.text!
+                }
+                let params = ["uid": Auth.auth().currentUser?.uid,
+                              "pet_name": self.petName,
+                              "title": self.titleTextField.text!,
+                              "text": text_temp,
+                              "date": self.selectedDate
+                              ]
+                let url = self.URL+"events/add-events/"
+                AF.request(url, method: .post, parameters: params, encoding: JSONEncoding.default, headers: headers).responseJSON { response in
+                    switch(response.result){
+                    case .success(let value):
+                        self.navigationController?.popViewController(animated: true)
+                    case .failure(let error):
+                        print("Error : Something Wrong")
+                    }
+                }
+            }
+            else{ //수정
+                let headers : HTTPHeaders = [ "Accept":"application/json" ,  "Content-Type": "application/json", "X-CSRFToken": "", "charset":"utf-8"]
+                var text_temp = ""
+                if(self.contentTextView.text! == "내용을 입력하세요."){
+                    text_temp = ""
+                }
+                else{
+                    text_temp = self.contentTextView.text!
+                }
+                let params = ["uid": Auth.auth().currentUser?.uid,
+                              "pet_name": self.petName,
+                              "title": self.titleTextField.text!,
+                              "text": text_temp,
+                              "date": self.selectedDate,
+                              "pk": self.pk
+                              ]
+                let url = self.URL+"events/revise-events/"
+                AF.request(url, method: .post, parameters: params, encoding: JSONEncoding.default, headers: headers).responseJSON { response in
+                    switch(response.result){
+                    case .success(let value):
+                        self.navigationController?.popViewController(animated: true)
+                    case .failure(let error):
+                        print("Error : Something Wrong")
+                    }
                 }
             }
         }

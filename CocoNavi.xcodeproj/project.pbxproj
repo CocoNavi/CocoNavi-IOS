@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		111F9CC924D91D6400C619EA /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 111F9CC824D91D6400C619EA /* Event.swift */; };
 		1123377124C91E4800DDA9A4 /* CalendarDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1123377024C91E4800DDA9A4 /* CalendarDetailViewController.swift */; };
 		1123377324C9549600DDA9A4 /* EventAddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1123377224C9549600DDA9A4 /* EventAddViewController.swift */; };
 		113C9B1E24C574E900693BA1 /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 113C9B1D24C574E900693BA1 /* UserViewController.swift */; };
@@ -26,6 +27,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		111F9CC824D91D6400C619EA /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		1123377024C91E4800DDA9A4 /* CalendarDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarDetailViewController.swift; sourceTree = "<group>"; };
 		1123377224C9549600DDA9A4 /* EventAddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventAddViewController.swift; sourceTree = "<group>"; };
 		113C9B1D24C574E900693BA1 /* UserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
@@ -97,6 +99,7 @@
 				1123377024C91E4800DDA9A4 /* CalendarDetailViewController.swift */,
 				1123377224C9549600DDA9A4 /* EventAddViewController.swift */,
 				119EAA8C24D78F660035DA95 /* Pet.swift */,
+				111F9CC824D91D6400C619EA /* Event.swift */,
 			);
 			path = CocoNavi;
 			sourceTree = "<group>";
@@ -256,6 +259,7 @@
 				113C9B2224C5771D00693BA1 /* BoardViewController.swift in Sources */,
 				118ADE0524C52180008F8921 /* LoginViewController.swift in Sources */,
 				113C9B1E24C574E900693BA1 /* UserViewController.swift in Sources */,
+				111F9CC924D91D6400C619EA /* Event.swift in Sources */,
 				1123377124C91E4800DDA9A4 /* CalendarDetailViewController.swift in Sources */,
 				1185804624C4416F00890181 /* ViewController.swift in Sources */,
 				113C9B2024C5770900693BA1 /* MainViewController.swift in Sources */,
