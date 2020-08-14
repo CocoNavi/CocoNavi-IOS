@@ -46,8 +46,8 @@
             filePath = "CocoNavi/EventAddViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "332"
-            endingLineNumber = "332"
+            startingLineNumber = "341"
+            endingLineNumber = "341"
             landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>
@@ -62,10 +62,73 @@
             filePath = "CocoNavi/EventAddViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "320"
-            endingLineNumber = "320"
+            startingLineNumber = "329"
+            endingLineNumber = "329"
             landmarkName = "viewDidLoad()"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "0038DE50-F632-496B-8158-F17A886366D3"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CocoNavi/AddPetViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "43"
+            endingLineNumber = "43"
+            landmarkName = "AddPetViewController"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  uuid = "0038DE50-F632-496B-8158-F17A886366D3 - 705134f0102bab11"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "CocoNavi.AddPetViewController.dogBreeds.getter : Swift.Array&lt;Swift.String&gt;"
+                  moduleName = "CocoNavi"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/woowonjin/Documents/CocoNavi-IOS/CocoNavi/AddPetViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "21"
+                  endingLineNumber = "21"
+                  offsetFromSymbolStart = "52">
+               </Location>
+               <Location
+                  uuid = "0038DE50-F632-496B-8158-F17A886366D3 - 9a04778e8c90f416"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "CocoNavi.AddPetViewController.init(nibName: Swift.Optional&lt;Swift.String&gt;, bundle: Swift.Optional&lt;__C.NSBundle&gt;) -&gt; CocoNavi.AddPetViewController"
+                  moduleName = "CocoNavi"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/woowonjin/Documents/CocoNavi-IOS/CocoNavi/AddPetViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "21"
+                  endingLineNumber = "21"
+                  offsetFromSymbolStart = "1025">
+               </Location>
+               <Location
+                  uuid = "0038DE50-F632-496B-8158-F17A886366D3 - e836046ef856cdda"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "CocoNavi.AddPetViewController.init(coder: __C.NSCoder) -&gt; Swift.Optional&lt;CocoNavi.AddPetViewController&gt;"
+                  moduleName = "CocoNavi"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/woowonjin/Documents/CocoNavi-IOS/CocoNavi/AddPetViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "21"
+                  endingLineNumber = "21"
+                  offsetFromSymbolStart = "960">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

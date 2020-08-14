@@ -261,6 +261,14 @@ class EventAddViewController: UIViewController, UICollectionViewDelegate, UIColl
         }
     }
     
+//    override func viewWillAppear(_ animated: Bool) {
+//        if(self.pk == ""){
+//            self.navigationItem.title = "일정 추가"
+//        }
+//        else{
+//            self.navigationItem.title = "일정 수정"
+//        }
+//    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -291,6 +299,7 @@ class EventAddViewController: UIViewController, UICollectionViewDelegate, UIColl
         toolBar.isUserInteractionEnabled = true
         toolBar.sizeToFit()
         dateTextField.inputAccessoryView = toolBar //Change your TextField name here
+        
         //왼쪽으로 슬라이드 하면 뒷 화면
         var leftSwipe : UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(slideLeft))
         leftSwipe.direction = .right

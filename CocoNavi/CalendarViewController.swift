@@ -150,11 +150,16 @@ class CalendarViewController: UIViewController, UICollectionViewDelegate, UIColl
         leftSwipe.direction = .right
         self.CalendarCollectionView.addGestureRecognizer(rightSwipe)
         self.CalendarCollectionView.addGestureRecognizer(leftSwipe)
+        
+        //Nav Bar title
+        self.navigationController?.navigationBar.topItem?.title = ""
+//        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+        self.navigationController?.navigationBar.tintColor = UIColor(red: 251.0/255.0, green: 106.0/255.0, blue: 2.0/255.0, alpha: 1.0)
+//        self.navigationController?.navigationBar.barTintColor = UIColor(red: 251.0/255.0, green: 106.0/255.0, blue: 2.0/255.0, alpha: 1.0)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         getEvents()
-        print("events : ", self.events)
         getPets()
     }
     
